@@ -32,23 +32,6 @@ Pull requests are welcome!
    ```
 
 
-### Using a pre-trained model
-
-1. **Download and unpack a model**:
-   ```
-   curl http://data.keithito.com/data/speech/tacotron-20180906.tar.gz | tar xzC /tmp
-   ```
-
-2. **Run the demo server**:
-   ```
-   python3 demo_server.py --checkpoint /tmp/tacotron-20180906/model.ckpt
-   ```
-
-3. **Point your browser at localhost:9000**
-   * Type what you want to synthesize
-
-
-
 ### Training
 
 *Note: you need at least 40GB of free disk space to train a model.*
