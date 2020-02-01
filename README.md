@@ -1,26 +1,13 @@
-# Tacotron
+# Tacotron2
 
-An implementation of Tacotron speech synthesis in TensorFlow.
+Korean Speech Synthesis with Tacotron
 
-
-### Audio Samples
-
-  * **[Audio Samples](https://keithito.github.io/audio-samples/)** from models trained using this repo.
-    * The first set was trained for 441K steps on the [LJ Speech Dataset](https://keithito.com/LJ-Speech-Dataset/)
-      * Speech started to become intelligible around 20K steps.
-    * The second set was trained by [@MXGray](https://github.com/MXGray) for 140K steps on the [Nancy Corpus](http://www.cstr.ed.ac.uk/projects/blizzard/2011/lessac_blizzard2011/).
-
-
-### Recent Updates
-
-1. @npuichigo [fixed](https://github.com/keithito/tacotron/pull/205) a bug where dropout was not being applied in the prenet.
-
-2. @begeekmyfriend created a [fork](https://github.com/begeekmyfriend/tacotron) that adds location-sensitive attention and the stop token from the [Tacotron 2](https://arxiv.org/abs/1712.05884) paper. This can greatly reduce the amount of data required to train a model.
+Note that this repo is based on https://github.com/hccho2/Tacotron2-Wavenet-Korean-TTS, https://github.com/keithito/tacotron
 
 
 ## Background
 
-In April 2017, Google published a paper, [Tacotron: Towards End-to-End Speech Synthesis](https://arxiv.org/pdf/1703.10135.pdf),
+In February 2018, Google published a paper, [NATURAL TTS SYNTHESIS BY CONDITIONINGWAVENET ON MEL SPECTROGRAM PREDICTIONS],
 where they present a neural text-to-speech model that learns to synthesize speech directly from
 (text, audio) pairs. However, they didn't release their source code or training data. This is an
 independent attempt to provide an open-source implementation of the model described in their paper.
@@ -69,8 +56,7 @@ Pull requests are welcome!
 1. **Download a speech dataset.**
 
    The following are supported out of the box:
-    * [LJ Speech](https://keithito.com/LJ-Speech-Dataset/) (Public Domain)
-    * [Blizzard 2012](http://www.cstr.ed.ac.uk/projects/blizzard/2012/phase_one) (Creative Commons Attribution Share-Alike)
+    * [KSS Dataset](https://www.kaggle.com/bryanpark/korean-single-speaker-speech-dataset) (Public Domain)
 
    You can use other datasets if you convert them to the right format. See [TRAINING_DATA.md](TRAINING_DATA.md) for more info.
 
@@ -80,30 +66,16 @@ Pull requests are welcome!
    After unpacking, your tree should look like this for LJ Speech:
    ```
    tacotron
-     |- LJSpeech-1.1
+     |- kss
          |- metadata.csv
          |- wavs
    ```
 
-   or like this for Blizzard 2012:
-   ```
-   tacotron
-     |- Blizzard2012
-         |- ATrampAbroad
-         |   |- sentence_index.txt
-         |   |- lab
-         |   |- wav
-         |- TheManThatCorruptedHadleyburg
-             |- sentence_index.txt
-             |- lab
-             |- wav
-   ```
 
 3. **Preprocess the data**
    ```
-   python3 preprocess.py --dataset ljspeech
+   python3 preprocess.py --dataset kss
    ```
-     * Use `--dataset blizzard` for Blizzard data
 
 4. **Train a model**
    ```
