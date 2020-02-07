@@ -73,7 +73,7 @@ class Tacotron2():
             elif hp.attention_type == 'mon_bah':
                 attention_mechanism = BahdanauMonotonicAttention(128, encoder_outputs, memory_sequence_length = input_lengths, normalize=True)
             elif hp.attention_type == 'loung':
-                attention_mechanism = LuongAttention(128, encoder_outputs, memory_sequence_length = input_lengths, scale=True) 
+                attention_mechanism = LuongAttention(128, encoder_outputs, memory_sequence_length = input_lengths) 
 
             # attention_mechanism = LocationSensitiveAttention(128, encoder_outputs, hparams=hp, is_training=is_training, mask_encoder=True, memory_sequence_length = input_lengths, smoothing=False, cumulate_weights=True)
             #mask_encoder: whether to mask encoder padding while computing location sensitive attention. Set to True for better prosody but slower convergence.
