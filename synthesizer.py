@@ -31,7 +31,7 @@ class Synthesizer:
             self.model.inputs: [np.asarray(seq, dtype=np.int32)],
             self.model.input_lengths: np.asarray([len(seq)], dtype=np.int32)
         }
-        print(tf.shape(seq))
+        print(np.asarray(seq, dtype=np.int32).shape)
         print(len(seq))
         wav = self.session.run(self.wav_output, feed_dict=feed_dict)
         wav = audio.inv_preemphasis(wav)
