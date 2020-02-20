@@ -33,8 +33,6 @@ class Tacotron2():
             is_training = linear_targets is not None
             batch_size = tf.shape(inputs)[0]
             hp = self._hparams
-            print(tf.shape(inputs)[1])
-            print(input_lengths)
 
             # Embeddings
             embedding_table = tf.get_variable(
