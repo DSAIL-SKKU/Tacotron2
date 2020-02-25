@@ -82,9 +82,9 @@ class Tacotron2():
             decoder_lstm = [ZoneoutLSTMCell(1024, is_training, zoneout_factor_cell=0.1, zoneout_factor_output=0.1, name='decoder_LSTM_{}'.format(i+1)) for i in range(2)]
             
             decoder_lstm = tf.contrib.rnn.MultiRNNCell(decoder_lstm, state_is_tuple=True)
-            decoder_init_state = decoder_lstm.zero_state(batch_size=batch_size, dtype=tf.float32) #tensorflow1에는 없음
+            # decoder_init_state = decoder_lstm.zero_state(batch_size=batch_size, dtype=tf.float32) #tensorflow1에는 없음
             
-            attention_cell = AttentionWrapper(decoder_lstm, attention_mechanism, initial_cell_state=decoder_init_state, alignment_history=True, output_attention=False)
+            attention_cell = AttentionWrapper(decoder_lstm, attention_mechanism, alignment_history=True, output_attention=False)
 
             # attention_state_size = 256
             # Decoder input -> prenet -> decoder_lstm -> concat[output, attention]
