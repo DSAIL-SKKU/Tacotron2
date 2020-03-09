@@ -28,7 +28,7 @@ from synthesizer import Synthesizer
 def get_output_base_path(checkpoint_path):
     base_dir = os.path.dirname(checkpoint_path)
     m = re.compile(r'.*?\.ckpt\-([0-9]+)').match(checkpoint_path)
-    name = 'eval-%d' % int(m.group(1)) if m else 'eval'
+    name = 'eval-char-%d' % int(m.group(1)) if m else 'eval'
     return os.path.join(base_dir, name)
 
 
